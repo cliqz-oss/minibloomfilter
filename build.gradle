@@ -1,0 +1,24 @@
+group 'com.cliqz'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.6
+
+version = 1.0
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Cliqz MiniBloomFilter',
+                'Implementation-Version': version,
+                'Implementation-Vendor': 'CLIQZ GmbH'
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
