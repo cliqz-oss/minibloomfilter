@@ -1,11 +1,37 @@
+plugins {
+    id 'java'
+    id 'maven'
+    id "com.jfrog.bintray" version "1.7.3"
+}
+
 group 'com.cliqz'
-version '1.0-SNAPSHOT'
-
-apply plugin: 'java'
-
+version '1.0'
 sourceCompatibility = 1.6
 
-version = 1.0
+bintray {
+    user = project.properties['bintray.user']
+    key = project.properties['bintray.api_key']
+    configurations = ['archives']
+    pkg {
+        repo = 'cliqz-oss'
+        name = 'minibloomfilter'
+        desc = 'A simple bloomfilter implementation using SipHash'
+        userOrg = 'cliqz'
+        licenses = ['MIT']
+        websiteUrl = 'https://github.com/cliqz-oss/minibloomfilter'
+        issueTrackerUrl = 'https://github.com/cliqz-oss/minibloomfilter/issues'
+        vcsUrl = 'https://github.com/cliqz-oss/minibloomfilter.git'
+        publicDownloadNumbers = true
+        githubRepo = 'cliqz-oss/minibloomfilter'
+        githubReleaseNotesFile = 'README.md'
+
+        version {
+            name =  project.version
+            vcsTag = project.version
+            released = new Date()
+        }
+    }
+}
 
 jar {
     manifest {
